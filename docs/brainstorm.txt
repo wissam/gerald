@@ -1,0 +1,63 @@
+Gerald is a learning project to get me back up and running with coding, since I
+have not programmed anything worthwhile in more than 10 years.
+Gerald's name was suggested by Akerlie.
+
+Gerald will:
+
+
+1- Connect to twitch with a secondary account
+2- sit in channel(s) and parse what people say.
+3- It will count emotes used per user.
+4- It will keep count of the favourite emote per user
+5- It will keep count of the top 10 emotes used in the channel.
+
+
+To do this, the following is needed to learn:
+
+
+1- Find out how to connet to twitch's irc (already done)
+2- Find out how to detect emotes (already done)
+3- Relearn how to deal with databases (totally forgot how), learn an orm (most
+probably gorm)
+4- Learn how to structure the go project, I have seen a standard floating
+around, but unsure how to structure gorm models/functions yet.
+5- start with sqlite for ease then use a proper db later.
+
+
+Random points:
+
+1- Dockerised!
+2- Log output for log aggregation (stdout)
+3- idiomatic 
+4- Load balancing
+5- Kubernetes? (yes overkill, but the point is to learn)
+
+
+yeah enough... good start...
+
+
+Questions? Remarks?
+
+1 - I wonder if I should structure it as a MVC project?
+2 - keep an eye on :  golang-migrate /
+migrate
+3 - I have no idea what I am doing...
+4 - 
+
+
+TODO:
+
+1-Tmux is not configured on this pc! blasphemy!
+
+
+
+DB Notes:
+(probably should dust up my uml skills...)
+1 - user N:N emote
+2 - user N:N channel
+3 - users have multiple roles in channel: broadcaster, mod, viewer(vip,normal)
+4 - users have multiple types/roles globally(find out what):staff , ...
+(I wonder if instead of string as type/role I should have a limited list of
+existing roles, or just keep it open for future expandibility? who knows what
+are the best practices...
+5 - 
