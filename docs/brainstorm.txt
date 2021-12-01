@@ -42,7 +42,20 @@ Questions? Remarks?
 2 - keep an eye on :  golang-migrate /
 migrate
 3 - I have no idea what I am doing...
-4 - 
+4 - Gempir lib is incomplete, missing User fields, maybe more. So either help
+Gempir, or create a layer now to deal with it...or just scrap the extra info
+needed?? but then I would have to re populate the db with the missing info at
+one point... hmmm...which can be done upon user join... 
+okie... it is decided...skip some fields for now...
+5 - This project might be a bit bigger than I expected it to be as a learning
+project... weeeeee... 
+6 - mini http/rest lib? maybe... 
+7 - service package as an aggregator for twitchirc and twitchapi? something to
+ponder 
+8 - 
+
+
+
 
 
 TODO:
@@ -61,3 +74,32 @@ DB Notes:
 existing roles, or just keep it open for future expandibility? who knows what
 are the best practices...
 5 - 
+
+
+Further Ideas:
+
+1 - Apex api: get current amount of kills from tracker and legend. 
+2 - Bot becomes modular with plugins, core funtionality is minimal with a web
+interface. I need my brother for this.
+3 - Find a way for twitch bot to general and consume channel points!
+ 
+
+First Attempt at something working...
+- connect to irc, wait for user to say a line with an emote, create user and
+  slap the emote in the db. able to see it with an sqlite viewer...
+
+
+so in the mood to dump this and go play apex...but...must...resist...!
+
+Roadmap:
+
+0.1.0: Emotes counter 
+0.2.0: Multiple channels support
+0.3.0:
+0.4.0:
+0.5.0:
+0.6.0:
+0.7.0:
+0.8.0:
+0.9.0:
+0.9.9:

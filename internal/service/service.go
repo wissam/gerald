@@ -1,17 +1,20 @@
 package service
 
 import (
-	"fmt"
+	//"fmt"
 	"log"
 	"os"
 	"strings"
 
-	"github.com/wissam/gerald/internal/commands"
-
 	"github.com/gempir/go-twitch-irc/v2"
+	"github.com/wissam/gerald/internal/commands"
+	"github.com/wissam/gerald/internal/db"
 )
 
 func Run() {
+
+	db.Connect()
+	db.Migrate()
 	client := twitch.NewClient(os.Getenv("NICKNAME"), os.Getenv("OAUTH"))
 	client.OnPrivateMessage(func(message twitch.PrivateMessage) {
 		if strings.HasPrefix(message.Message, "!") {
@@ -27,6 +30,8 @@ func Run() {
 		log.Fatal("Could not connect to twitch!")
 		log.Fatal(cerr)
 		panic(cerr)
+	} else {
+		log.Println("Connected to twitch")
 	}
 }
 func CommandsParser(message twitch.PrivateMessage) {
@@ -35,13 +40,19 @@ func CommandsParser(message twitch.PrivateMessage) {
 		"hi":        commands.Hi,
 		"hello":     commands.Hello,
 		"favourite": commands.Favourite,
+		"emotes":    commands.Emotes,
 	}
 	firstword := strings.Fields(message.Message)[0][1:]
 	if val, exists := m[firstword]; exists {
-		fmt.Println(val(message))
+		log.Println(val(message))
 	}
 }
 
 func MessageParser(message twitch.PrivateMessage) {
-	fmt.Println("Parse Message")
+	//userid := db.New_User(message.User.ID)
+	if message.Emotes != nil {
+		for _, e := range message.Emotes {
+			db.EmoteCountInsert(message.User.ID, message.RoomID, e.Name, e.Count)
+		}
+	}
 }
