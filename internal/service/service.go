@@ -1,7 +1,6 @@
 package service
 
 import (
-	//"fmt"
 	"log"
 	"os"
 	"strings"
@@ -11,10 +10,12 @@ import (
 	"github.com/wissam/gerald/internal/db"
 )
 
-func Run() {
+var dbi db.DB
 
-	db.Connect()
-	db.Migrate()
+func Run() {
+	dbi = db.DB{}
+	dbi.Connect()
+	dbi.Migrate()
 	client := twitch.NewClient(os.Getenv("NICKNAME"), os.Getenv("OAUTH"))
 	client.OnPrivateMessage(func(message twitch.PrivateMessage) {
 		if strings.HasPrefix(message.Message, "!") {
@@ -23,7 +24,6 @@ func Run() {
 			MessageParser(message)
 		}
 	})
-
 	client.Join("Kodder")
 	cerr := client.Connect()
 	if cerr != nil {
@@ -49,10 +49,9 @@ func CommandsParser(message twitch.PrivateMessage) {
 }
 
 func MessageParser(message twitch.PrivateMessage) {
-	//userid := db.New_User(message.User.ID)
 	if message.Emotes != nil {
 		for _, e := range message.Emotes {
-			db.EmoteCountInsert(message.User.ID, message.RoomID, e.Name, e.Count)
+			dbi.EmoteCountInsert(message.User.ID, message.RoomID, e.Name, e.Count)
 		}
 	}
 }

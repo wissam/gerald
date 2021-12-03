@@ -20,3 +20,11 @@ func Hello(message twitch.PrivateMessage) string {
 func Favourite(message twitch.PrivateMessage) string {
 	return "fav"
 }
+
+func Emotes(message twitch.PrivateMessage) string {
+	return "Emotes"
+}
+
+//I need to access the db, what's the best practice here? connection again or
+// pass the pointer along side the entire db package? no clue...
+// time to investigate...:
