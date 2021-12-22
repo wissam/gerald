@@ -11,11 +11,24 @@ import (
 type Counter struct {
 	gorm.Model
 	UserId string
-	RoomId string
+	RoomId string //I guess I need to have a relationship in here...
 	Emote  string
 	Count  int
 }
 
+// I wish I paid more attention to dbs...
+//type Channel struct {
+//	gorm.Model  //there is an ID here,so I would have to override it? hmmm
+//	BroadcasterId string //is this stupid? maybe just id and name?
+//	BroadcasterName   string
+//	Game  string
+//	GameId string
+//	BroadcasterLanguage string
+//	title string
+//	delay int
+//}
+//
+// I avoided learning DBs properly for too long...
 type DB struct {
 	db *gorm.DB
 }
@@ -29,7 +42,6 @@ func (d *DB) Connect() {
 	} else {
 		log.Println("Connected to database")
 	}
-	log.Println(d.db)
 }
 
 func (d *DB) Migrate() {
@@ -49,11 +61,16 @@ func (d *DB) EmoteCountInsert(userid string, roomid string, emote string, count 
 	}
 }
 
-func (d *DB) EmoteCountGetter(userid string, roomid string) {
+func (d *DB) EmoteCountGetter(userid string, roomid string) string {
 	//var counter Counter
 	var counters []Counter
-
 	result := d.db.Where("user_id = ? AND room_id = ?", userid, roomid).Find(&counters)
 
 	log.Printf("Rows Affected %d\n", result.RowsAffected)
+	emotes := ""
+	for _, counter := range counters {
+		//fmt.Println(counter.Emote)
+		emotes = emotes + " " + counter.Emote
+	}
+	return emotes
 }

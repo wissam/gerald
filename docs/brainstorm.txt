@@ -60,7 +60,8 @@ ponder
 
 TODO:
 
-1-Tmux is not configured on this pc! blasphemy!
+1-Tmux is not configured on this pc! blasphemy! (this has been done for a
+while)...I wonder if nvim supports strike text...
 
 
 
@@ -74,6 +75,14 @@ DB Notes:
 existing roles, or just keep it open for future expandibility? who knows what
 are the best practices...
 5 - 
+
+--new db brainstorming...
+the above no longer applies...I think...maybe I will return to it at one point
+or maybe I will just make my life easier for the time being, keep everything as
+is and continue with other implementation until I really need to develop the db
+properly.
+...okie that;s what I will do... why do things today if I can postpone them
+till tomorrow :P
 
 
 Further Ideas:
@@ -90,7 +99,34 @@ First Attempt at something working...
 
 
 so in the mood to dump this and go play apex...but...must...resist...!
+---------------------------------------------------------------------------------
+Change of plans!!!
 
+I figured out yesterday that some of my assumptions were stupid. Emotes change!
+Streamers delete, replace, update, bring back emotes all the time, and
+sometimes just seasonally! like halloween emotes, or xmas emotes.
+So there should be a mechanism that checks at the start of each stream what is
+the complete emotes set that the streamer has and then act on that.
+Would be nice to keep it in memory, at least the emote id, or else it would
+need to check the api with every single emote written in chat? that's not a
+good design! Also I believe the api has a limit, imagine doing that for several
+hundred channels!
+so....
+Today will start by trying to connect with the twitch api instead of just
+twitch irc, will try to implement it on my own , this will teach me a bit more
+than just finding a library that does it for me, which apparently is frowned
+upon in the Go community... no idea why . I should probably read about their
+mindset.
+
+k... letsee gooo...
+---------------------------------------------------------------------------------
+I have the bad habbit to look way ahead of what I am doing, which handicaps me
+and stop me from progressing with what ever I am doing. I am now thinking about
+a problem that I should not be thinking about for another couple of weeks...
+devops brain must be reduced a bit with coding... it is iterative...
+--------------------------------------------------------------------------------
+i love streaming to bots... yay...
+-------------------------------------------------------------------------------
 Roadmap:
 
 0.1.0: Emotes counter 
