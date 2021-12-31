@@ -1,11 +1,13 @@
 package service
 
 import (
+	"context"
 	"log"
 	"os"
 	"strings"
 
 	"github.com/gempir/go-twitch-irc/v2"
+	"github.com/go-redis/redis/v8"
 	"github.com/wissam/gerald/internal/commands"
 	"github.com/wissam/gerald/internal/db"
 	"github.com/wissam/gerald/internal/tapi"
@@ -35,23 +37,26 @@ func Listen() {
 }
 
 func Run() {
-	//I forgot what I was doing...hmmm, let's see...
 	dbi = db.DB{}
 	dbi.Connect()
 	dbi.Migrate()
-	//this whole design is shitty...
-	// unsure what's the best way to deal wiht it...
-
-	// So I can assume that the id will come from the database somehow?
-	// the "how" will be determined later.
-	// I need a join for all those ids , a emotes retrievals for all those ids.
-	// then a check
-	// I wonder, does twitch send an event trigger upon channel starting
-	// broadcast?
-	// Thinking...not typing anything...
-	//-------------
-	//-------------tapi.GetUser("kodder") //forgot this, I think the Getuser is gone...
-	//-------------
+	//temporary redis connect , and sub
+	// DO NOT KEEP!!!!
+	// **********************************************************************
+	var ctx = context.Background()
+	rdb := redis.NewClient(&redis.Options{
+		Addr:     "localhost:6379",
+		Password: "", // no password set
+		DB:       0,  // use default DB
+	})
+	subscriber := rdb.Subscribe(ctx, "one")
+	for {
+		msg, _ := subscriber.ReceiveMessage(ctx)
+		log.Println(msg)
+	}
+	//************anything under here will not work until I fix the
+	//above***************
+	newchan := make(chan string)
 	channels := []Channel{{Name: "MadMistro", ID: "38429111"}, {Name: "Kodder", ID: "101185038"}}
 	for i := 0; i < len(channels); i++ {
 		channels[i].Emotes = tapi.GetAllEmotes(channels[i].ID)
@@ -65,10 +70,14 @@ func Run() {
 			log.Println(emote)
 		}
 	}
+	//start goroutine only once!!! lifewithbugs is a hero!
+	go AddChannel(newchan)
 	client = twitch.NewClient(os.Getenv("NICKNAME"), os.Getenv("OAUTH"))
 	client.OnPrivateMessage(func(message twitch.PrivateMessage) {
 		if strings.HasPrefix(message.Message, "!") {
 			CommandsParser(message)
+		} else if strings.HasPrefix(message.Message, "$") {
+			newchan <- strings.Fields(message.Message)[0][1:]
 		} else {
 			MessageParser(message)
 		}
@@ -82,6 +91,15 @@ func Run() {
 		log.Fatal(cerr)
 		panic(cerr)
 	}
+}
+
+//I am not sure how design this...
+func AddChannel(nchan chan string) {
+	log.Println("pre channel assignment to see if this is getting blocked")
+	//this needs a select with a cases. including "done".
+	newchan := <-nchan
+	log.Printf("Attempting to join %s\n", newchan)
+	client.Join(newchan)
 }
 func CommandsParser(message twitch.PrivateMessage) {
 
@@ -109,4 +127,5 @@ func MessageParser(message twitch.PrivateMessage) {
 			dbi.EmoteCountInsert(message.User.ID, message.RoomID, e.ID, e.Count)
 		}
 	}
+	log.Println(message.Channel) //this is magic, it solves all problems on earth...
 }
