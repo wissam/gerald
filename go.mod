@@ -6,12 +6,14 @@ require (
 	github.com/OpenPeeDeeP/xdg v1.0.0 // indirect
 	github.com/atotto/clipboard v0.1.2 // indirect
 	github.com/aybabtme/humanlog v0.4.1 // indirect
+	github.com/cespare/xxhash/v2 v2.1.2 // indirect
 	github.com/cli/safeexec v1.0.0 // indirect
 	github.com/cloudfoundry/jibber_jabber v0.0.0-20151120183258-bcc4c8345a21 // indirect
 	github.com/creack/pty v1.1.11 // indirect
+	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
 	github.com/emirpasic/gods v1.12.0 // indirect
 	github.com/fatih/color v1.9.0 // indirect
-	github.com/fsnotify/fsnotify v1.4.7 // indirect
+	github.com/fsnotify/fsnotify v1.4.9 // indirect
 	github.com/gdamore/encoding v1.0.0 // indirect
 	github.com/gdamore/tcell/v2 v2.4.0 // indirect
 	github.com/gempir/go-twitch-irc/v2 v2.7.0 // indirect
@@ -19,6 +21,7 @@ require (
 	github.com/go-git/gcfg v1.5.0 // indirect
 	github.com/go-git/go-billy/v5 v5.0.0 // indirect
 	github.com/go-logfmt/logfmt v0.5.0 // indirect
+	github.com/go-redis/redis/v8 v8.11.4 // indirect
 	github.com/gobwas/glob v0.2.3 // indirect
 	github.com/golang-collections/collections v0.0.0-20130729185459-604e922904d3 // indirect
 	github.com/golang-jwt/jwt v3.2.1+incompatible // indirect
@@ -54,7 +57,7 @@ require (
 	github.com/xanzy/ssh-agent v0.2.1 // indirect
 	github.com/xo/terminfo v0.0.0-20210125001918-ca9a967f8778 // indirect
 	golang.org/x/crypto v0.0.0-20201002170205-7f63de1d35b0 // indirect
-	golang.org/x/net v0.0.0-20201002202402-0a1ea396d57c // indirect
+	golang.org/x/net v0.0.0-20210428140749-89ef3d95e781 // indirect
 	golang.org/x/sys v0.0.0-20211102061401-a2f17f7b995c // indirect
 	golang.org/x/term v0.0.0-20210927222741-03fcf44c2211 // indirect
 	golang.org/x/text v0.3.7 // indirect

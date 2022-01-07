@@ -127,8 +127,13 @@ devops brain must be reduced a bit with coding... it is iterative...
 --------------------------------------------------------------------------------
 i love streaming to bots... yay...
 -------------------------------------------------------------------------------
+Hmm on days where I can't code maybe I should build a pipeline? gitlab pipeline
+would be nice? haven't touched gitlab cicd , maybe an good oppurtinity...
+okie...leet's at least create a gitlab repo...
+--------------------------------------------------------------------------------i
 Roadmap:
 
+0.0.0: Prototype to experiment with concepts, goroutines, channels, redis,etc.
 0.1.0: Emotes counter 
 0.2.0: Multiple channels support
 0.3.0:
