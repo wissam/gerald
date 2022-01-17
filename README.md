@@ -23,11 +23,14 @@ small webhook microservice, a redis server for pub/sub and a database.
 This is a small web server that will be processing events from twitch, ie:
 broadcast starting and broadcast ending. This will be useful to start processes
 with the bot or even make it join the channel.
+(After learning how to do this with Go, docker et al. I am taking this and
+putting on google cloud using their serverless option)
 
 
 ## messaging queue (redis pub/sub)
 Just a message broker to be able to signal the bot from other parts of the
 system, currently from the webhook server only.
+(this will switch to the google cloud pub/sub service at one point)
 
 
 ## Bot
