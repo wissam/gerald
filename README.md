@@ -12,7 +12,7 @@ commits into one and calling it: prototype done. Since the majority of my
 commits at the moment is something like "saving".
 
 The name "Gerald" came as a suggestion from Akerlie, a cool "bot" found lurking
-and talking in Ashy twitch channel.
+and talking in [Ashy](https://twitch.tv/ashy) twitch channel.
 
 # Project Structure
 
