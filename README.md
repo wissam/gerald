@@ -11,6 +11,9 @@ When I am done with the experimental/prototyping stage, I am squashing all the
 commits into one and calling it: prototype done. Since the majority of my
 commits at the moment is something like "saving".
 
+The name "Gerald" came as a suggestion from Akerlie, a cool "bot" found lurking
+and talking in Ashy twitch channel.
+
 # Project Structure
 
 The project consists of 4 parts (in my head at the moment), the main bot, a
