@@ -33,6 +33,7 @@ Random points:
 5- Kubernetes? (yes overkill, but the point is to learn)
 
 
+
 yeah enough... good start...
 
 
