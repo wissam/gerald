@@ -25,11 +25,13 @@ var dbi db.DB
 var client *twitch.Client
 
 //yep good enough for now...
-
-func Listen() {
-	log.Println("Listening")
+// is checking services stupid? what is best practice?
+func CheckServices() {
+	log.Println("Checking Services")
+	//need to pretify this? googling...
 }
 
+//func Check
 func Run() {
 	dbi = db.DB{}
 	dbi.Connect()
@@ -37,6 +39,7 @@ func Run() {
 	//temporary redis connect , and sub
 	// DO NOT KEEP!!!!
 	// **********************************************************************
+	// Testing connection failure!
 	var ctx = context.Background()
 	//rmsg := make(chan redis.Message)
 	rdb := redis.NewClient(&redis.Options{

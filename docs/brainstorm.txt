@@ -132,6 +132,15 @@ Hmm on days where I can't code maybe I should build a pipeline? gitlab pipeline
 would be nice? haven't touched gitlab cicd , maybe an good oppurtinity...
 okie...leet's at least create a gitlab repo...
 --------------------------------------------------------------------------------i
+I need to add context timeout to all connections, trial and retrial as well 
+connection testing and failure error messages, also all servers/url should be
+passable as argument or env variables...need to check best practices...
+--------------------------------------------------------------------------------
+I wonder if I should have a TUI interface to control everything. is there a
+point? or just jumpt to web interface? tui is probably easier for me since it
+is very minimal with a web interface I would have to learn frontend...(vomit)
+--------------------------------------------------------------------------------
+
 Roadmap:
 
 0.0.0: Prototype to experiment with concepts, goroutines, channels, redis,etc.

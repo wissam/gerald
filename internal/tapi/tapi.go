@@ -13,7 +13,7 @@ import (
 // TODO
 // DB :( ... this needs to be stored in DB after unmarshalling... FIGURE IT
 // OUT!
-
+// yep, I did not migrate this to models...
 type EmoteResponse struct {
 	Data     []EmoteData `json:"data"`
 	Template string      `json:"template"`

@@ -12,12 +12,4 @@ type Emote struct {
 	InUse bool
 }
 
-// still don't like the name...
-type Rcred struct {
-	Address  string
-	Password string //plain text string for now, encrypt before production release
-	Database int
-	channel  string
-}
-
-// todo tag with json and gorm (I think)
+// Write CRUD , do I use gorm or not?
